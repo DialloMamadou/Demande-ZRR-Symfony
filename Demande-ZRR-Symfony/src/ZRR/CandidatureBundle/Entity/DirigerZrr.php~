@@ -1,0 +1,183 @@
+<?php
+
+namespace ZRR\CandidatureBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * DirigerZrr
+ *
+ * @ORM\Table(name="diriger_zrr")
+ * @ORM\Entity(repositoryClass="ZRR\CandidatureBundle\Repository\DirigerZrrRepository")
+ */
+class DirigerZrr
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateDebut", type="date", nullable=false)
+     */
+    private $dateDebut;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateFin", type="date", nullable=true)
+     */
+    private $dateFin;
+
+    //proprietaire
+    /**
+     * @ORM\ManyToOne(targetEntity="ZRR\CandidatureBundle\Entity\Zrr", inversedBy="DirigerZrrs")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $zrr;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ZRR\CandidatureBundle\Entity\ResponsableSci", inversedBy="DirigerZrrs")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $responsableSci;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set dateDebut
+     *
+     * @param \DateTime $dateDebut
+     *
+     * @return DirigerZrr
+     */
+    public function setDateDebut($dateDebut)
+    {
+        $this->dateDebut = $dateDebut;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDebut
+     *
+     * @return \DateTime
+     */
+    public function getDateDebut()
+    {
+        return $this->dateDebut;
+    }
+
+    /**
+     * Set dateFin
+     *
+     * @param \DateTime $dateFin
+     *
+     * @return DirigerZrr
+     */
+    public function setDateFin($dateFin)
+    {
+        $this->dateFin = $dateFin;
+
+        return $this;
+    }
+
+    /**
+     * Get dateFin
+     *
+     * @return \DateTime
+     */
+    public function getDateFin()
+    {
+        return $this->dateFin;
+    }
+
+
+    /**
+     * Set ResponsableSciController
+     *
+     * @param \stdClass $responsableZrr
+     *
+     * @return DirigerZrr
+     */
+    public function setResponsableSci($responsableSci)
+    {
+        $this->ResponsableSci = $responsableSci;
+
+        return $this;
+    }
+
+    /**
+     * Get responsableZrr
+     *
+     * @return \stdClass
+     */
+    public function getResponsableSci()
+    {
+        return $this->ResponsableSci;
+    }
+
+    /**
+     * Set laboratoire
+     *
+     * @param \ZRR\CandidatureBundle\Entity\Laboratoire $laboratoire
+     *
+     * @return DirigerZrr
+     */
+    public function setLaboratoire(\ZRR\CandidatureBundle\Entity\Laboratoire $laboratoire = null)
+    {
+        $this->laboratoire = $laboratoire;
+
+        return $this;
+    }
+
+    /**
+     * Get laboratoire
+     *
+     * @return \ZRR\CandidatureBundle\Entity\Laboratoire
+     */
+    public function getLaboratoire()
+    {
+        return $this->laboratoire;
+    }
+
+
+    /**
+     * Set zrr
+     *
+     * @param \ZRR\CandidatureBundle\Entity\Zrr $zrr
+     *
+     * @return DirigerZrr
+     */
+    public function setZrr(\ZRR\CandidatureBundle\Entity\Zrr $zrr = null)
+    {
+        $this->zrr = $zrr;
+
+        return $this;
+    }
+
+    /**
+     * Get zrr
+     *
+     * @return \ZRR\CandidatureBundle\Entity\Zrr
+     */
+    public function getZrr()
+    {
+        return $this->zrr;
+    }
+}

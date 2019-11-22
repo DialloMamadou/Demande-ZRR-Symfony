@@ -1,0 +1,9 @@
+Hello: Hola %name% !
+Bye: 'Adios %name% !'
+Please: por favor %name% !
+advert:
+    add:
+        info: "Advertencia: este anuncio se agregará directamente en la página de inicio después de la validación del formulario."
+
+    delete:
+        confirmation: ¿ Seguro que quieres eliminar el anuncio "%advert.title%" ?

@@ -1,0 +1,147 @@
+<?php
+
+namespace ZRR\CandidatureBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Disciplinescientifique
+ *
+ * @ORM\Table(name="disciplinescientifique")
+ * @ORM\Entity(repositoryClass="ZRR\CandidatureBundle\Repository\DisciplinescientifiqueRepository")
+ */
+class Disciplinescientifique
+{
+    //, inversedBy="disciplinesScientifiques"
+    /**
+     * @ORM\ManyToOne(targetEntity="ZRR\CandidatureBundle\Entity\Domainescientifique")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $domainescientifique;
+    /**
+     * @ORM\OneToMany(targetEntity="ZRR\CandidatureBundle\Entity\Activite", mappedBy="disciplinescientifique")
+     */
+    private $activites;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return Disciplinescientifique
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Add activite
+     *
+     * @param \ZRR\CandidatureBundle\Entity\Activite $activite
+     *
+     * @return Disciplinescientifique
+     */
+    public function addActivite(\ZRR\CandidatureBundle\Entity\Activite $activite)
+    {
+        $this->activites[] = $activite;
+
+        return $this;
+    }
+
+    /**
+     * Remove activite
+     *
+     * @param \ZRR\CandidatureBundle\Entity\Activite $activite
+     */
+    public function removeActivite(\ZRR\CandidatureBundle\Entity\Activite $activite)
+    {
+        $this->activites->removeElement($activite);
+    }
+
+    /**
+     * Get activites
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActivites()
+    {
+        return $this->activites;
+    }
+
+    public function __toString()
+    {
+        return $this->nom;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->activites = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+    /**
+     * Set domainescientifique
+     *
+     * @param \ZRR\CandidatureBundle\Entity\Domainescientifique $domainescientifique
+     *
+     * @return Disciplinescientifique
+     */
+    public function setDomainescientifique(\ZRR\CandidatureBundle\Entity\Domainescientifique $domainescientifique)
+    {
+        $this->domainescientifique = $domainescientifique;
+
+        return $this;
+    }
+
+    /**
+     * Get domainescientifique
+     *
+     * @return \ZRR\CandidatureBundle\Entity\Domainescientifique
+     */
+    public function getDomainescientifique()
+    {
+        return $this->domainescientifique;
+    }
+}

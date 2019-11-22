@@ -1,0 +1,149 @@
+<?php
+
+namespace ZRR\UserBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use FOS\UserBundle\Model\User as BaseUser;
+
+
+/**
+ * User
+ *
+ * @ORM\Table(name="user")
+ * @ORM\Entity(repositoryClass="ZRR\UserBundle\Repository\UserRepository")
+ */
+class User extends BaseUser
+{
+    //propriétaire
+    /**
+     * @ORM\OneToOne(targetEntity="ZRR\CandidatureBundle\Entity\Candidat", cascade={"persist","remove"}, inversedBy="user")
+     */
+    private $candidat;
+
+    /**
+     * @ORM\OneToOne(targetEntity="ZRR\CandidatureBundle\Entity\Secretaire", cascade={"persist","remove"}, inversedBy="user")
+     */
+    private $secretaire;
+
+    /**
+     * @ORM\OneToOne(targetEntity="ZRR\CandidatureBundle\Entity\ResponsableLabo", cascade={"persist","remove"}, inversedBy="user")
+     */
+    private $respLabo;
+
+    /**
+     * @ORM\OneToOne(targetEntity="ZRR\CandidatureBundle\Entity\ResponsableSci", cascade={"persist","remove"}, inversedBy="user")
+     */
+    private $respSci;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Set candidat
+     *
+     * @param \ZRR\CandidatureBundle\Entity\Candidat $candidat
+     *
+     * @return User
+     */
+    public function setCandidat(\ZRR\CandidatureBundle\Entity\Candidat $candidat = null)
+    {
+        $this->candidat = $candidat;
+        $this->candidat->setEmail($this->email);
+        return $this;
+    }
+
+    /**
+     * Get candidat
+     *
+     * @return \ZRR\CandidatureBundle\Entity\Candidat
+     */
+    public function getCandidat()
+    {
+        return $this->candidat;
+    }
+
+    /**
+     * Set secretaire
+     *
+     * @param \ZRR\CandidatureBundle\Entity\Secretaire $secretaire
+     *
+     * @return User
+     */
+    public function setSecretaire(\ZRR\CandidatureBundle\Entity\Secretaire $secretaire = null)
+    {
+        $this->secretaire = $secretaire;
+
+        return $this;
+    }
+
+    /**
+     * Get secretaire
+     *
+     * @return \ZRR\CandidatureBundle\Entity\Secretaire
+     */
+    public function getSecretaire()
+    {
+        return $this->secretaire;
+    }
+
+    /**
+     * Set respLabo
+     *
+     * @param \ZRR\CandidatureBundle\Entity\ResponsableLabo $respLabo
+     *
+     * @return User
+     */
+    public function setRespLabo(\ZRR\CandidatureBundle\Entity\ResponsableLabo $respLabo = null)
+    {
+        $this->respLabo = $respLabo;
+
+        return $this;
+    }
+
+    /**
+     * Get respLabo
+     *
+     * @return \ZRR\CandidatureBundle\Entity\ResponsableLabo
+     */
+    public function getRespLabo()
+    {
+        return $this->respLabo;
+    }
+
+    /**
+     * Set respSci
+     *
+     * @param \ZRR\CandidatureBundle\Entity\ResponsableSci $respSci
+     *
+     * @return User
+     */
+    public function setRespSci(\ZRR\CandidatureBundle\Entity\ResponsableSci $respSci = null)
+    {
+        $this->respSci = $respSci;
+
+        return $this;
+    }
+
+    /**
+     * Get respSci
+     *
+     * @return \ZRR\CandidatureBundle\Entity\ResponsableSci
+     */
+    public function getRespSci()
+    {
+        return $this->respSci;
+    }
+}

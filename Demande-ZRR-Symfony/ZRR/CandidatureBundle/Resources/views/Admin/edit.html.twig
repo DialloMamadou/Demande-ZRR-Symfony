@@ -1,0 +1,22 @@
+
+
+{% extends "ZRRCandidatureBundle::layoutAdmin.html.twig" %}
+
+{% block title %}
+    Modification d'un dossier - {{ parent() }}
+{% endblock %}
+
+{% block zrr_admin_body %}
+
+    <h2>Modifier un dossier</h2>
+
+    {{ include("ZRRCandidatureBundle:Admin:form.html.twig") }}
+
+    <p>
+        <a href="{{ path('zrr_dossier_view', {'dossier_id': dossier.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour au dossier
+        </a>
+    </p>
+
+{% endblock %}

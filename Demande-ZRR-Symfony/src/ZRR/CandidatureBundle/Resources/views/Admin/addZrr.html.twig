@@ -1,0 +1,27 @@
+
+{% extends "ZRRCandidatureBundle::layout.html.twig" %}
+{% block title %}
+    ZRR - {{ parent() }}
+{% endblock %}
+
+{% block zrr_candidature_body %}
+
+<h2>Ajout d'une ZRR</h2>
+<div class="well">
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {{ form_widget(form) }}
+
+    {{ form_widget(form.save,{'attr': {'class': 'btn btn-primary'}}) }}
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+</div>
+
+<p>
+    <a href="{{ path('zrr_admin_home_page') }}" class="btn btn-default">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Retour à la liste
+    </a>
+</p>
+
+{% endblock %}

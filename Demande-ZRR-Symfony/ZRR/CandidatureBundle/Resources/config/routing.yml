@@ -1,0 +1,145 @@
+zrr_admin_home_page:
+    path:   /admin
+    defaults: { _controller: ZRRCandidatureBundle:Administrateur:index }
+
+
+#Laboratoire
+zrr_labo_add:
+    path:   /addLabo
+    defaults: { _controller: ZRRCandidatureBundle:Administrateur:addLabo }
+
+
+#Candidat
+zrr_candidature_candidat:
+    path:     /candidat
+    defaults: { _controller: ZRRCandidatureBundle:Candidature:candidat }
+
+zrr_candidature_zrr:
+    path:     /zrr
+    defaults: { _controller: ZRRCandidatureBundle:Candidature:zrr }
+
+
+
+# Information Compl
+zrr_info_view:
+    path:     /info
+    defaults: { _controller: ZRRCandidatureBundle:Candidature:info }
+
+zrr_info_compl_page:
+    path:     /complement
+    defaults: { _controller: ZRRCandidatureBundle:Candidature:infoCompl }
+
+
+
+# Responsable Scientifique
+zrr_resp_sci_register:
+    path:     /register
+    defaults: { _controller: ZRRCandidatureBundle:ResponsableSci:candidat }
+
+
+# Responsable laboratoire
+zrr_resplabo_select:
+    path:   /selectRespLabo
+    defaults: { _controller: ZRRCandidatureBundle:Administrateur:selectRespLabo }
+
+zrr_resplabo_add:
+    path:   /editRespLabo
+    defaults: { _controller: ZRRCandidatureBundle:Administrateur:addRespLabo }
+
+
+# Dossier
+zrr_dossier_view:
+    path:   /viewDossier/{dossier_id}
+    defaults: { _controller: ZRRCandidatureBundle:Administrateur:viewDossier }
+
+zrr_dossier_edit:
+    path:   /editDossier/{dossier_id}
+    defaults: { _controller: ZRRCandidatureBundle:Administrateur:editDossier }
+
+zrr_dossier_delete:
+    path:   /deleteDossier/{dossier_id}
+    defaults: { _controller: ZRRCandidatureBundle:Administrateur:deleteDossier }
+
+zrr_dossier_generateXlsx:
+    path:   /generateXlsx/{dossier_id}
+    defaults: { _controller: ZRRCandidatureBundle:Administrateur:generateXlsx }
+
+
+# ZRR
+zrr_zrr_add:
+    path:   /addZrr/{labo_id}
+    defaults: { _controller: ZRRCandidatureBundle:Administrateur:addZrr }
+
+zrr_zrr_view:
+    path:   /viewZrr/{zrr_id}
+    defaults: { _controller: ZRRCandidatureBundle:Administrateur:viewZrr }
+
+zrr_zrr_delete:
+    path:     /deleteZrr/{zrr_id}
+    defaults: { _controller: ZRRCandidatureBundle:Administrateur:deleteZrr }
+
+zrr_zrr_edit:
+    path:   /editZrr/{zrr_id}
+    defaults: { _controller: ZRRCandidatureBundle:Administrateur:editZrr }
+
+
+#Secretaire
+zrr_secr_home_page:
+    path:   /secretaire
+    defaults: { _controller: ZRRCandidatureBundle:Secretaire:index }
+
+zrr_test:
+    path: /test
+    defaults: { _controller: ZRRCandidatureBundle:Test:test }
+
+zrr_secr_dossier_view:
+    path:   /secrViewDossier/{dossier_id}
+    defaults: { _controller: ZRRCandidatureBundle:Secretaire:viewDossier }
+
+zrr_dossier_valider:
+    path:   /secrValiderDossier/{dossier_id}
+    defaults: { _controller: ZRRCandidatureBundle:Secretaire:validerDossier }
+
+zrr_dossier_retourner:
+    path:   /secrRetournerDossier/{dossier_id}
+    defaults: { _controller: ZRRCandidatureBundle:Secretaire:retournerDossier }
+
+zrr_secr_add:
+    path:   /addSecr
+    defaults: { _controller: ZRRCandidatureBundle:Administrateur:addSecr }
+
+
+#Activités
+zrr_activite_page:
+    path:     /activite
+    defaults: { _controller: ZRRCandidatureBundle:ResponsableSci:activite }
+
+zrr_liste_activite:
+    path:     /liste
+    defaults: { _controller: ZRRCandidatureBundle:ResponsableSci:index }
+
+zrr_view_activite:
+    path:   /viewActivite/{act_id}
+    defaults: { _controller: ZRRCandidatureBundle:ResponsableSci:viewActivite }
+
+zrr_activite_edit:
+    path:     /editActivite/{act_id}
+    defaults: { _controller: ZRRCandidatureBundle:ResponsableSci:editActivite }
+
+zrr_activite_delete:
+    path:     /deleteActivite/{act_id}
+    defaults: { _controller: ZRRCandidatureBundle:ResponsableSci:deleteActivite }
+
+
+#Traduction
+zrr_language:
+    path: /language/{_locale}
+    defaults: { _controller: ZRRCandidatureBundle:Administrateur:language }
+    requirements:
+        _local: fr|en
+
+
+#Test à ne pas prendre en compte
+zrr_test:
+    path: /test
+    defaults: { _controller: ZRRCandidatureBundle:Test:test }

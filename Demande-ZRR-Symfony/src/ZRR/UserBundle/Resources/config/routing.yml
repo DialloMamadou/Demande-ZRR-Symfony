@@ -1,0 +1,13 @@
+#zrr_user_homepage:
+#    path:     /
+#    defaults: { _controller: ZRRUserBundle:Default:index }
+
+#zrr_user_register:
+#    path:     /
+#    defaults: { _controller: ZRRUserBundle:Registration:register }
+
+
+#fos_user_registration_register:
+#    path: /register/
+#    defaults: { _controller: ZRRUserBundle:Registration:register }
+

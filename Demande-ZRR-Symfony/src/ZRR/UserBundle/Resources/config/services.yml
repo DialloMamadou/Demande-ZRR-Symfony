@@ -1,0 +1,22 @@
+#services:
+#    zrr_user.example:
+#        class: ZRR\UserBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+services:
+    redirect.after.login:
+        class: ZRR\UserBundle\Redirection\AfterLoginRedirection
+        arguments: ['@router']
+
+    zrr.form.registration:
+        class: ZRR\UserBundle\Form\Type\RegistrationFormType
+        #arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: "form.type", alias: "zrr_user_registration" }
+
+
+        zrr.form.resetting:
+                class: ZRR\UserBundle\Form\Type\ResettingFormType
+
+                tags:
+                    - { name: "form.type", alias: "zrr_user_resetting" }

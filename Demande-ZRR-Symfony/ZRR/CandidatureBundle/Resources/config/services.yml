@@ -1,0 +1,4 @@
+services:
+#    zrr_candidature.example:
+#        class: ZRR\CandidatureBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

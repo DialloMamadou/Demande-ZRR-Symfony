@@ -1,0 +1,159 @@
+{% extends "ZRRCandidatureBundle::layoutSecr.html.twig" %}
+
+{% block title %}
+    Lecture d'un dossier - {{ parent() }}
+{% endblock %}
+
+{% block zrr_admin_body %}
+
+
+
+    <h2 align="center"><strong>{{ 'dossier.numDossier'|trans }}</strong> <strong style="color: #ffcc00">{{ dossier.numDossier}}</strong></h2>
+    <div class="well" >
+        <table class="table">
+            <tr>
+                <td><strong>{{ 'dossier.dateDemande'|trans }} </strong> le {{ dossier.dateDemande|date('d/m/Y') }}</td>
+                <td><strong>{{ 'dossier.etatDossier'|trans }}</strong>{{ dossier.etatDossier}}</td>
+            </tr>
+        </table>
+    </div>
+{% if dossier.candidat %}
+    <hr/>
+    <div class="well" >
+        <h3 align="center"><strong style="color: #c83237">{{ 'dossier.candidat.titre'|trans }} </strong></h3>
+        <table class="table">
+            <tr>
+                <td><strong>{{ 'dossier.candidat.nom'|trans }}</strong> {{ dossier.candidat.nom }}</td>
+                <td><strong>{{ 'dossier.candidat.prenom'|trans }}</strong> {{ dossier.candidat.prenom }}</td>
+
+            </tr>
+            <tr>
+                <td><strong>{{ 'dossier.candidat.nomMarital'|trans }}</strong> {{ dossier.candidat.nomMarital }}</td>
+                <td><strong>{{ 'dossier.candidat.sexe'|trans }}</strong> {{ dossier.candidat.sexe }}</td>
+            </tr>
+            <tr>
+                <td><strong>{{ 'dossier.candidat.typeId'|trans }}</strong> {{ dossier.candidat.typeId }}</td>
+                <td><strong>{{ 'dossier.candidat.numId'|trans }}</strong> {{ dossier.candidat.numId }}</td>
+
+            </tr>
+            <tr>
+                <td><strong>{{ 'dossier.candidat.ddn'|trans }}</strong> {{ dossier.candidat.ddn|date('d/m/Y') }}</td>
+                <td><strong>{{ 'dossier.candidat.cpNais'|trans }}</strong> {{ dossier.candidat.cpNais }}</td>
+            </tr>
+            <tr>
+                <td><strong>{{ 'dossier.candidat.villeNais'|trans }}</strong> {{ dossier.candidat.villeNais }}</td>
+                <td><strong>{{ 'dossier.candidat.paysNais'|trans }}</strong> {{ dossier.candidat.paysNais.nom }}</td>
+            </tr>
+            <tr>
+                <td><strong>{{ 'dossier.candidat.nationalite'|trans }}</strong> {{ dossier.candidat.nationalite.nom  }}</td>
+                <td><strong>{{ 'dossier.candidat.nationalite2'|trans }}</strong> {{ dossier.candidat.nationalite2.nom  }}</td>
+
+            </tr>
+            <tr>
+                <td><strong>{{ 'dossier.candidat.email'|trans }}</strong> {{ dossier.candidat.email }}</td>
+                <td><strong>{{ 'dossier.candidat.adresse'|trans }}</strong> {{ dossier.candidat.adresse }}</td>
+            </tr>
+            <tr>
+                <td><strong>{{ 'dossier.candidat.cp'|trans }}</strong> {{ dossier.candidat.cp }}</td>
+                <td><strong>{{ 'dossier.candidat.ville'|trans }}</strong> {{ dossier.candidat.ville }}</td>
+            </tr>
+            <tr>
+                <td><strong>{{ 'dossier.candidat.pays'|trans }}</strong> {{ dossier.candidat.pays.nom  }}</td>
+                <td><strong>{{ 'dossier.candidat.situationPro'|trans }}</strong> {{ dossier.candidat.situationPro }}</td>
+            </tr>
+            <tr>
+                <td><strong>{{ 'dossier.candidat.employeur'|trans }}</strong> {{ dossier.candidat.employeur }}</td>
+                <td><strong>{{ 'dossier.candidat.adresseEmployeur'|trans }}</strong> {{ dossier.candidat.adresseEmployeur }}</td>
+            </tr>
+            <tr>
+                <td><strong>{{ 'dossier.candidat.cpEmployeur'|trans }}</strong> {{ dossier.candidat.cpEmployeur }}</td>
+                <td><strong>{{ 'dossier.candidat.villeEmployeur'|trans }}</strong> {{ dossier.candidat.villeEmployeur }}</td>
+            </tr>
+            <tr>
+                <td><strong>{{ 'dossier.candidat.paysEmployeur'|trans }}</strong> {{ dossier.candidat.paysEmployeur.nom  }}</td>
+
+            </tr>
+        </table>
+    </div>
+
+    {% endif %}
+
+    <hr/>
+
+    <div class="well" >
+        <h3 align="center"><strong style="color: #c83237">{{ 'dossier.activite.titre'|trans }} </strong></h3>
+        <table class="table">
+            <tr>
+                <td><strong>{{ 'dossier.activite.statut'|trans }} </strong> le {{ dossier.activite.statut }}</td>
+                <td><strong>{{ 'dossier.activite.financement'|trans }}</strong>{{ dossier.activite.financement }}</td>
+            </tr>
+            <tr>
+                <td><strong>{{ 'dossier.activite.montantFinancement'|trans }} </strong> le {{ dossier.activite.montantFinancement }}</td>
+                <td><strong>{{ 'dossier.activite.typeAcces'|trans }}</strong>{{ dossier.activite.typeAcces }}</td>
+            </tr>
+            <tr>
+                <td><strong>{{ 'dossier.activite.dateDebut'|trans }} </strong> le {{ dossier.activite.dateDebut|date('d/m/Y') }}</td>
+                <td><strong>{{ 'dossier.activite.dateFin'|trans }}</strong>{{ dossier.activite.dateFin|date('d/m/Y') }}</td>
+            </tr>
+            <tr>
+                <td><strong>{{ 'dossier.activite.domaineScience'|trans }} </strong> le {{ dossier.activite.domaineScience }}</td>
+                <td><strong>{{ 'dossier.activite.disciplineScience'|trans }}</strong>{{ dossier.activite.disciplineScience }}</td>
+            </tr>
+            <tr>
+                <td><strong>{{ 'dossier.activite.poste'|trans }} </strong> le {{ dossier.activite.poste }}</td>
+                <td><strong>{{ 'dossier.activite.resume'|trans }}</strong>{{ dossier.activite.resume }}</td>
+            </tr>
+        </table>
+    </div>
+
+
+    {% if dossier.candidat %}
+    <hr/>
+
+    <div class="well" >
+        <h3 align="center"><strong style="color: #c83237">{{ 'dossier.candidat.infoComplementaire.titre'|trans }} </strong></h3>
+        <table class="table">
+            <tr>
+                <td><strong>{{ 'dossier.candidat.infoCompl.autreDmd'|trans }}</strong> {{ dossier.candidat.infoCompl.autreDmd }}</td>
+                <td><strong>{{ 'dossier.candidat.infoCompl.infoDmd'|trans }}</strong> {{ dossier.candidat.infoCompl.infoDmd }}</td>
+            </tr>
+            <tr>
+                <td><strong>{{ 'dossier.candidat.infoCompl.autoAccesZrr'|trans }}</strong> {{ dossier.candidat.infoCompl.autoAccesZrr }}</td>
+                <td><strong>{{ 'dossier.candidat.infoCompl.zrrConcernee'|trans }}</strong> {{ dossier.candidat.infoCompl.zrrConcernee }}</td>
+            </tr>
+            <tr>
+                <td><strong>{{ 'dossier.candidat.infoCompl.refHabilitation'|trans }}</strong> {{ dossier.candidat.infoCompl.refHabilitation }}</td>
+                <td><strong>{{ 'dossier.candidat.infoCompl.protection'|trans }}</strong> {{ dossier.candidat.infoCompl.protection }}</td>
+            </tr>
+            <tr>
+                <td><strong>{{ 'dossier.candidat.infoCompl.niveauHabilitation'|trans }}</strong> {{ dossier.candidat.infoCompl.niveauHabilitation }}</td>
+                <td><strong>{{ 'dossier.candidat.infoCompl.autoriteHabilitation'|trans }}</strong> {{ dossier.candidat.infoCompl.autoriteHabilitation }}</td>
+            </tr>
+        </table>
+    </div>
+{% endif %}
+
+
+
+
+
+
+
+
+
+    <p>
+        <a href="{{ path('zrr_secr_home_page') }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à l'accueil
+        </a>
+        <a href="{{ path('zrr_dossier_valider', {'dossier_id': dossier.id}) }}" class="btn btn-success">
+            <i class="glyphicon glyphicon-ok"></i>
+            Valider le dossier
+        </a>
+        <a href="{{ path('zrr_dossier_retourner', {'dossier_id': dossier.id}) }}" class="btn btn-warning">
+            <i class="glyphicon glyphicon-share-alt"></i>
+            Retourner le dossier
+        </a>
+    </p>
+
+{% endblock %}

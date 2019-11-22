@@ -1,0 +1,137 @@
+dossier:
+    numDossier: Numéro de dossier :
+
+    dateDemande: Demande éffetué : 
+    etatDossier: Etat du dossier : 
+    avisResp: Avis motivé du responsable de la ZRR : 
+    avisChef: Avis du chef d'établissement ou délégué à la sécurité (FSD, officier de sécurité, etc : 
+    avisMinistere: Avis du ministère de la tutelle : 
+    commentaire: Commentaires, précisions sur poste/stage du demandeur :
+
+    etablissement.titre: 4. Cadre réservé à l'établissement d'accueil
+
+    delete:
+        confirmation: "Etes-vous certain de vouloir supprimer ce dossier \"%code%\" ?"
+
+    candidat:
+        titre: 1. Informations personnelles
+        nom: Nom : 
+        prenom: Prenom : 
+        nomMarital: Nom marital : 
+        sexe: Sexe : 
+        typeId: Type de pièce d'identité : 
+        numId: Numéro de pièce d'identité : 
+        ddn: Date de naissance : 
+        cpNais: Code postal de naissance : 
+        villeNais: Ville de naissance : 
+        paysNais: Pays de naissance : 
+        nationalite: Nationalité (pays) : 
+        nationalite2: Autre nationalité (pays) : 
+        email: Adresse E-mail : 
+        adresse: Adresse principale actuelle : 
+        cp:  Code postal : 
+        ville: Ville : 
+        pays: Pays : 
+        situationPro: Situation professionnelle actuelle : 
+        employeur: Organisme employeur actuel : 
+        adresseEmployeur: Adresse de l'organisme employeur : 
+        cpEmployeur: Code postal : 
+        villeEmployeur: Ville : 
+        paysEmployeur: Pays :
+        infoComplementaire:
+            titre: 3. Informations complémentaires
+
+        infoCompl:
+            autreDmd: Autre demande d'accès ?
+            infoDmd: Précision :
+            autoAccesZrr: Autorisation d'accès à une ZRR ?
+            zrrConcernee: La ZRR concernée :
+            refHabilitation: La référence de l'habitation :
+            protection: Protection du secret de la défense nationale ?
+            autoriteHabilitation: Autorité d'habilitation :
+            niveauHabilitation: Niveau d'habilitation:
+
+
+    activite:
+        titre : 2. Activités au sein de la ZRR :
+        statut : Status au sein de la ZRR :
+        financement : Origine du financement de la mission :
+        montantFinancement : Montant du financemant en euros :
+        typeAcces : Type d'accès :
+        dateDebut : Date de début de la mission dans la ZRR :
+        dateFin : Date de fin de la mission dans la ZRR :
+        domainescientifique : Domaine scientifique principal :
+        discieplinescientifique : Discipline scientifique principale :
+        poste : ntitulé du poste :
+        resume : Résumé de la mission et de l'activité (sujet, thème) prévue au sein de la ZRR :
+
+
+    zrr:
+        laboratoire.nomLabo: Nom de l'établissement hébergeur de la ZRR :
+        laboratoire.codeLabo: Code de l'unité :
+
+        codeZrr: Code de la zrr :
+        adresseZrr: adresse de le zrr :
+        ministere: Ministère de rattachement :
+
+        laboratoire.dirigerLabos.responsableLabo.nomResp: Nom du responsable :
+        laboratoire.dirigerLabos.responsableLabo.prenomResp: Prenom du responsable :
+        laboratoire.dirigerLabos.responsableLabo.fonction: Fonction :
+
+        laboratoire.dirigerLabos.responsableLabo.telLabo: Téléphone :
+        laboratoire.dirigerLabos.responsableLabo.emailLabo: E-mail :
+
+
+
+
+activite:
+    titre: Activités au sein de la ZRR
+    delete:
+        confirmation: "Etes-vous certain de vouloir supprimer le dossier et l'activité pour le poste de \"%poste%\" ? Le candidat ne pourra plus compléter son dossier."
+
+candidat:
+    important: IMPORTANT
+
+    texte: Joinde à ce formulaire un descriptif complet et détaillé du sujet de la mission,
+        une copie de la pièce d'identité(carte d'identité ou passeport), un CV numérique
+        complet sans ruptuere de date faisant apparaître les diplômes, titres, travaux et
+        l'expérience professionnelle; ainsi que les documents relatifs au financement.
+        Uniquement en format .pdf.
+
+    donnees: Les données collectées dans le formulaire font l'objet d'un traitement de données à caractère personnel,
+                conforment aux articles 39 et 40 de la loi n° 78-17 du 6 janvier 1978 modifiée relative à l'informatique, aux fichiers et aux libertés.
+
+registration:
+    check_email: 'Un e-mail a été envoyé à l''adresse %email%. Il contient un lien d''activation sur lequel il vous faudra cliquer afin d''activer le compte.'
+    confirmed: 'Félicitations %username%, votre compte est maintenant activé.'
+    back: 'Remplir mon dossier'
+    submit: 'Créer un compte'
+    flash:
+        user_created: 'L''utilisateur a été créé avec succès.'
+    email:
+        subject: 'Bienvenue %username% !'
+        message: |
+            Bonjour %username% !
+
+            Pour valider votre compte utilisateur, merci de vous rendre sur %confirmationUrl%
+
+            Ce lien ne peut être utilisé qu'une seule fois pour valider votre compte.
+
+            Vos identifiants de connexion sont : 
+            Nom d'utilisateur :  %nom% ou %email%
+            Mot de passe :  %password%
+
+            Cordialement,
+            L'équipe
+    role: 'Rôles'
+    candidat: 'Candidat'
+
+security:
+    login:
+        password: 'Mot de passe'
+        username: 'Identifiant'
+        submit: 'Login'
+
+zrr:
+    delete:
+        confirmation: "Etes-vous certain de vouloir supprimer la ZRR \"%code%\" ?"

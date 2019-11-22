@@ -1,0 +1,25 @@
+{# src/MCD/PlatformBundle/Resources/views/Advert/add.html.twig #}
+
+{% extends "ZRRCandidatureBundle::layout.html.twig" %}
+{% block title %}
+    Ajouter un laboratoire - {{ parent() }}
+{% endblock %}
+
+{% block zrr_candidature_body %}
+
+    <h2>Ajout d'un laboratoire</h2>
+    <div class="well">
+
+        <a href="{{  path("zrr_resplabo_select") }}" class="btn btn-default"><i class="glyphicon glyphicon-edit"></i>ajouter un responsable de laboratoire déjà existant</a>
+        <a href="{{  path("zrr_resplabo_add") }}" class="btn btn-default"><i class="glyphicon glyphicon-edit"></i>creer un responsable de laboratoire</a>
+
+    </div>
+
+    <p>
+        <a href="{{ path('zrr_admin_home_page') }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+    </p>
+
+{% endblock %}

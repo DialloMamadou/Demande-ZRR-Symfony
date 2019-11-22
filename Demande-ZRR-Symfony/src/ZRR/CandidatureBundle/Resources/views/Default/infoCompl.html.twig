@@ -1,0 +1,13 @@
+{% extends "ZRRCandidatureBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block zrr_candidature_body %}
+
+    <h2 align="CENTER">Informations complémentaires</h2>
+    <hr>
+    {{ include("ZRRCandidatureBundle:Default:infoComplForm.html.twig") }}
+
+{% endblock %}

@@ -1,0 +1,15 @@
+    {% extends "ZRRCandidatureBundle::layout.html.twig" %}
+{% block zrr_candidature_body %}
+
+    {{ include("ZRRCandidatureBundle:Admin:dossierform.html.twig") }}
+
+
+    <h2 style="color: red" align="CENTER"><u>{{'candidat.important'|trans }}</u></h2>
+
+    <p>
+        {{ 'candidat.texte'|trans }}  <strong style="color: red">*</strong>
+    </p>
+    <p><strong>{{ 'candidat.donnees'|trans }}</strong></p>
+
+
+{% endblock %}

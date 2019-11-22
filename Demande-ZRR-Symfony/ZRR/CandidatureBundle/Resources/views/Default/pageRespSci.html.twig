@@ -1,0 +1,81 @@
+{% extends "ZRRCandidatureBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <table class="table" border="2">
+        <caption><h2><strong style="color: #dd8e11">Activités et candidats</strong></h2></caption>
+        <thead>
+        <tr>
+            <th rowspan="2">Statut au sein de la ZRR</th>
+            <th rowspan="2">Origine du financement de la mission</th>
+            <th rowspan="2">Montant du financement en euros</th>
+            <th rowspan="2">Type d'accès</th>
+            <th rowspan="2">Date de début de la mission dans la ZRR</th>
+            <th rowspan="2">Date de fin de la mission dans la ZRR</th>
+            <th rowspan="2">Domaine scientifique principal</th>
+            <th rowspan="2">Discipline scientifique principale</th>
+            <th rowspan="2">Intitulé du poste</th>
+            <th rowspan="2">Résumé de la mission et de l'activité (sujet, thème) prévue au sein de la ZRR</th>
+
+            <th colspan="3">Candidat</th>
+            <th rowspan="2" colspan="2" >Actions</th>
+        </tr>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for act in listact %}
+            <tr>
+                <td>{{ act.statut }}</td>
+                <td>{{ act.financement }}</td>
+                <td>{{ act.montantFinancement }}</td>
+                <td>{{ act.typeAcces }}</td>
+                <td>{{ act.dateDebut|date('d/m/Y') }}</td>
+                <td>{{ act.dateFin|date('d/m/Y') }}</td>
+                {#<td>{{ act.domaineScience }}</td>
+                <td>{{ act.disciplineScience }}</td>#}
+                <td>{{ act.poste }}</td>
+                <td>{{ act.resume }}</td>
+
+                {% if act.dossier and act.dossier.candidat %}
+                    <td>{{ act.dossier.candidat.nom }}</td>
+                    <td>{{ act.dossier.candidat.prenom }}</td>
+                    <td>{{ act.dossier.candidat.email }}</td>
+                {% else %}
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                {% endif %}
+
+
+                <td>
+                    <a href="{{ path('zrr_activite_edit', {'act_id': act.id}) }}" class="btn btn-info" >
+                        <i class="glyphicon glyphicon-edit"></i>
+                        Modifier
+                    </a>
+
+                </td>
+                <td>
+                    <a href="{{ path('zrr_activite_delete', {'act_id': act.id}) }}" class="btn btn-danger">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        Supprimer
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('zrr_activite_page') }}" class="btn btn-info">creer une activité avec un candidat</a>
+
+
+
+
+
+{% endblock %}

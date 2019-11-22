@@ -1,0 +1,111 @@
+<div  >
+    <div id="menu" class="col-md-3">
+        <div class="panel panel-primary">
+            <div align="center" class="panel-heading">
+                <h3>
+                    <strong>Les Laboratoires</strong>
+                </h3>
+            </div>
+
+            <div>
+                <ul class="nav nav-pills nav-stacked">
+
+                    {% set i = 0 %}
+                    {% for labo in lesLabos %}
+                        <button  id="{{ i }}" class="collapsible" data-toggle="collapse" data-target="#sub1">
+                            <i class="glyphicon glyphicon-filter"></i>
+                            {{ labo.nomLabo }}
+                            <small>
+                                <span style="float:right" class="glyphicon glyphicon-chevron-down"></span>
+                            </small>
+
+                        </button>
+
+                        <div class="content"  style="padding: 0">
+                            {% for zrr in labo.zrrs %}
+                                <li>
+                                    <a href="{{ path('zrr_zrr_view', {'zrr_id': zrr.id}) }}" class="btn btn-info" style="width: 100%">
+                                        {{ zrr.codeZrr}}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                            <li><a href="{{ path('zrr_zrr_add', {'labo_id': labo.id}) }}"class="btn btn-info" style="width: 100%">
+                                    <i class="glyphicon glyphicon-plus-sign"></i>Ajouter une ZRR</a></li>
+                        </div>
+                        {% set i = i+1 %}
+
+                    {% endfor %}
+                </ul>
+
+            </div>
+
+        </div>
+        <a href="{{ path('zrr_labo_add') }}" class="btn btn-info" style="width: 100%">
+            <i class="glyphicon glyphicon-plus-sign"></i>Ajouter un laboratoire</a>
+        <hr>
+        <a href="{{ path('fos_user_registration_register') }}" class="btn btn-info" style="width: 100%">
+            <i class="glyphicon glyphicon-plus-sign"></i>Ajouter une secrétaire</a>
+
+    </div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+
+            var but=$(this).attr('id');
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+
+                $(this).find('span').toggleClass("glyphicon-chevron-down", true);
+                $(this).find('span').toggleClass("glyphicon-chevron-up", false);
+                content.style.display = "none";
+
+            } else {
+                content.style.display = "block";
+                $(this).find('span').toggleClass("glyphicon-chevron-down", false);
+                $(this).find('span').toggleClass("glyphicon-chevron-up", true);
+            }
+
+
+
+        });
+    }
+
+
+
+
+    $(document).ready(function () {
+        $('[data-toggle=offcanvas]').click(function () {
+            $('.row-offcanvas').toggleClass('active');
+
+        });
+
+
+        /*var coll = document.getElementsByClassName("collapsible");
+        $(coll).click(function () {
+                var but=$(this).attr('id');
+                var change = true;
+                var a= $(this).attr('id');
+                $(this).find('span').toggleClass("glyphicon-chevron-up", change);
+                $(this).find('span').toggleClass("glyphicon-chevron-down", !change);
+                change = !change;
+            }
+
+        );*/
+    });
+
+
+
+
+    /*function find() {
+
+        $("#0").toggleClass("glyphicon glyphicon-chevron-up", change);
+        $("#0").toggleClass("glyphicon glyphicon-chevron-down", !change);
+        change = !change
+    }*/
+</script>

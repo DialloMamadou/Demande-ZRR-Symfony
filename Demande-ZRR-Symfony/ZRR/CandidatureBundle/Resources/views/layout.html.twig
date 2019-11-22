@@ -1,0 +1,18 @@
+{% extends "ZRRCoreBundle::layout.html.twig" %}
+{% block title %}
+    Activités au sein de la ZRR
+{% endblock %}
+
+{% block body %}
+
+
+    {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
+    {% block zrr_candidature_body %}
+        <script
+                src="https://code.jquery.com/jquery-3.2.1.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuitWlAQgxVSNgt4="
+                crossorigin="anonymous"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
+    {% endblock %}
+
+{% endblock %}

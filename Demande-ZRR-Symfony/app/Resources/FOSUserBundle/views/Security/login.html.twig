@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="{{ asset('login/css/bootstrap-3.3.7-dist/css/bootstrap.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('login/css/index.css') }}">
+</head>
+<body>
+{% block fos_user_content %}
+<header>
+    <nav class="navbar navbar-default navbar-class " >
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header  brand-logo">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img style="width: 120px;height: auto;margin-top: -15px" src="{{ asset('images/logo_univ1.png') }}" alt="">
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right navbar-items" style="font-size: 15px;color:black !important;">
+                    <li><a href="{{  path('zrr_language', {'_locale':'fr'}) }} ">FR</a></li>
+                    <li><a href= "{{ path('zrr_language', {'_locale':'en'})  }} ">EN</a></li>
+                    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+
+                    <li><a href="{{ path('fos_user_security_logout')}}">Logout</a></li>
+                    {% endif %}
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Login</div>
+                <div class="panel-body">
+                    {% if error %}
+                        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                    <form action="{{ path("fos_user_security_check") }}" method="post">
+                        {% if csrf_token %}
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        {% endif %}
+
+
+                        <div class="form-group">
+                            <label for="username" class="col-md-4 control-label">{{ 'security.login.username'|trans }}</label>
+
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="col-md-4 control-label">{{ 'security.login.password'|trans }}</label>
+
+
+                            <div class="col-md-6">
+                                <input class="form-control" type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <div class="checkbox">
+                                    <label>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ 'security.login.submit'|trans }}
+                                </button>
+
+                                <a class="btn btn-link" href="https://pdicost.univ-orleans.fr/appli-jpo/cas-connection.php" >
+                                    login with CAS ?
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock fos_user_content %}
+</body>
+</html>

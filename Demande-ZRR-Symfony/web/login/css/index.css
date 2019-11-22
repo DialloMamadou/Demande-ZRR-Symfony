@@ -1,0 +1,172 @@
+body{
+    font: normal normal normal 22px/1.4em raleway,sans-serif !important;
+}
+
+.navbar-class
+{
+    /*background-color: #0C3C60 ;*/
+    height: 100px;
+    padding-top: 20px;
+
+}
+
+ .navbar-default .navbar-nav > li > a {
+    color:black;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color:red;
+}
+
+ .navbar-brand{
+  color:#DAF0CC !important;
+  font: normal normal normal 22px/1.4em raleway,sans-serif;
+ }
+
+.brand-logo {
+ padding-left: 120px;
+}
+
+.navbar-items
+{
+padding-right: 30px;
+}
+
+
+.body-img{
+    width: 100%;
+    position: fixed;
+    top: 100px;
+    z-index: -1 !important;
+}
+
+
+.modal-dialog {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.modal-content {
+    height: auto;
+    min-height: 100%;
+    border-radius: 0;
+}
+
+#success_message{ display: none;}
+
+
+.margin-top-20{
+
+    margin-top: 25px;
+}
+
+
+
+#sortable { list-style-type: none; margin: 0; padding: 0;
+    }
+#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em;
+
+
+}
+
+
+#icons {
+    margin: 40px auto;
+    padding-left: 5px;
+    max-width: 700px;
+    width: 100%;
+    list-style: none;
+    text-align: left;
+    font-size: 1px;
+}
+
+
+.icon-ionic{
+    font-size: 32px;
+}
+
+
+ul#icons li {
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    padding: 37px;
+    width: 42px;
+    border-radius: 4px;
+    list-style: none;
+    text-align: center;
+    font-weight: normal;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+
+.chosed-icons i {
+    /*position: relative;*/
+    z-index: 0;
+    /*//display: inline-block;*/
+    /*padding: 22px;*/
+    width: 42px;
+    border-radius: 4px;
+    list-style: none;
+    /*text-align: center;*/
+    font-weight: normal;
+    font-size: 32px;
+    cursor: pointer;
+    
+}
+
+
+.download, .search {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 200px;
+    width: 100%;
+}
+
+.search input {
+    padding: 4px 6px;
+    width: 175px;
+    border: 0;
+    border-radius: 4px;
+    background: #F5F5F5;
+    text-align: center;
+    font-size: 14px;
+    margin-top:10px;
+}
+
+
+#icon-panel {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    padding: 20px 2px;
+    width: 260px;
+    border-radius: 4px;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    text-align: center;
+    font-size: 14px;
+    font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+    opacity: .96;
+}
+
+#icon-name {
+    display: block;
+    font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    border: 0;
+}
+
+
+i{
+    cursor: pointer;
+}
+
+.language-selected > a {
+    color: red !important;
+}

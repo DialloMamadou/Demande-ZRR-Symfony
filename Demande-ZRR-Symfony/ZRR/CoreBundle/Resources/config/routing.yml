@@ -1,0 +1,3 @@
+zrr_core_homepage:
+    path:     /
+    defaults: { _controller: ZRRCoreBundle:Core:index }

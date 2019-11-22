@@ -1,0 +1,45 @@
+{% extends "ZRRUserBundle::layout.html.twig" %}
+{% block fos_user_content %}
+
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+    </div>
+    {{ form_end(form) }}
+
+
+    <script type="text/javascript">
+
+        $(roles).change(function() {
+
+            // On récupère la balise <select>.
+
+            var $roles = $('select#fos_user_registration_form_roles_0');
+
+
+            // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
+
+            var $form = $(this).closest('form');
+            var data={};
+            data[$roles.attr('name')]=$roles.val();
+            $.ajax({
+                url : $form.attr('action'),
+                type: $form.attr('method'),
+                data : data,
+                success: function(html) {
+                    // Replace current position field ...
+                    $('#fos_user_registration_form_candidat').replaceWith(
+                        $(html).find('#fos_user_registration_form_secretaire')
+                    );
+                    // Position field now displays the appropriate positions.
+                }
+            });
+
+
+        });
+
+    </script>
+
+
+{% endblock fos_user_content %}

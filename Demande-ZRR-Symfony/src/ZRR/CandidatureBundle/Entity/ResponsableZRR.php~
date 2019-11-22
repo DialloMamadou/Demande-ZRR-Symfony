@@ -1,0 +1,127 @@
+<?php
+
+namespace ZRR\CandidatureBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ResponsableZRR
+ *
+ * @ORM\Table(name="responsable_zrr")
+ * @ORM\Entity(repositoryClass="ZRR\CandidatureBundle\Repository\ResponsableZRRRepository")
+ */
+class ResponsableZRR
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom_resp", type="string", length=255)
+     */
+    private $nomResp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom_resp", type="string", length=255)
+     */
+    private $prenomResp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fonction", type="string", length=255)
+     */
+    private $fonction;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nomResp
+     *
+     * @param string $nomResp
+     *
+     * @return ResponsableZRR
+     */
+    public function setNomResp($nomResp)
+    {
+        $this->nomResp = $nomResp;
+
+        return $this;
+    }
+
+    /**
+     * Get nomResp
+     *
+     * @return string
+     */
+    public function getNomResp()
+    {
+        return $this->nomResp;
+    }
+
+    /**
+     * Set prenomResp
+     *
+     * @param string $prenomResp
+     *
+     * @return ResponsableZRR
+     */
+    public function setPrenomResp($prenomResp)
+    {
+        $this->prenomResp = $prenomResp;
+
+        return $this;
+    }
+
+    /**
+     * Get prenomResp
+     *
+     * @return string
+     */
+    public function getPrenomResp()
+    {
+        return $this->prenomResp;
+    }
+
+    /**
+     * Set fonction
+     *
+     * @param string $fonction
+     *
+     * @return ResponsableZRR
+     */
+    public function setFonction($fonction)
+    {
+        $this->fonction = $fonction;
+
+        return $this;
+    }
+
+    /**
+     * Get fonction
+     *
+     * @return string
+     */
+    public function getFonction()
+    {
+        return $this->fonction;
+    }
+}
+

@@ -1,0 +1,64 @@
+<header>
+    <nav class="navbar navbar-default navbar-class " >
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header  brand-logo">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img class="navbar-brand" style="width: 120px;height: auto;margin-top: -15px" src="{{ asset('images/logo_univ1.png') }}" alt="">
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right navbar-items" style="font-size: 15px;color:black !important;">
+                    {#<li class=' @if(session('locale') == 'fr')  language-selected @endif ' ><a href=" {{ Route('language',['locale'=>'fr'])  }}">FR</a></li>
+                    <li class=' @if(session('locale') == 'en')  language-selected @endif '><a href= "{{ Route('language',['locale'=>'en'])  }} ">EN</a></li>
+                    <li class=' @if(session('locale') == 'es')  language-selected @endif ' ><a href=" {{ Route('language',['locale'=>'es'])  }}">ES</a></li>
+                    @if(session('login'))
+                    <li><a href="{{ Route('logout')}}">Logout</a></li>
+                    @endif
+                    {{--<li><a href="">Fees</a></li>--}}
+                    {{--<li><a href="">Clients</a></li>--}}
+                    {{--<li><a href="">Contact</a></li>--}}#}
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</header>
+{% block title %}
+    LOGIN
+{% endblock %}
+
+{# Dans notre layout, il faut définir le block body #}
+
+{% block body %}
+
+
+    {# On affiche les messages flash que définissent les contrôleurs du bundle #}
+
+    {% for key, messages in app.session.flashbag.all() %}
+
+        {% for message in messages %}
+
+            <div class="alert alert-{{ key }}">
+
+               {{ message|trans({}, 'FOSUserBundle') }}
+
+            </div>
+
+        {% endfor %}
+
+    {% endfor %}
+
+
+    {# On définit ce block, dans lequel vont venir s'insérer les autres vues du bundle #}
+
+    {% block fos_user_content %}
+
+    {% endblock fos_user_content %}
+
+
+{% endblock %}

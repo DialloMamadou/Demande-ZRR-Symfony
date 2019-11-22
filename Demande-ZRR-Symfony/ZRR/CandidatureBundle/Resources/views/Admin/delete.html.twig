@@ -1,0 +1,26 @@
+{% extends "ZRRCandidatureBundle::layoutAdmin.html.twig" %}
+
+
+{% block title %}
+    Suppression dossier - {{ parent() }}
+{% endblock %}
+
+{% block zrr_admin_body %}
+
+    <div class="alert alert-danger">
+        <strong>{{ 'dossier.delete.confirmation'|trans({'%code%': dossier.numDossier}) }}</strong>
+    </div>
+
+    {# On met l'id du dossier dans la route de l'action du formulaire #}
+    <form action="{{ path('zrr_dossier_delete', {'dossier_id': dossier.id}) }}" method="post">
+        <a href="{{ path('zrr_dossier_view', {'dossier_id': dossier.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour au dossier
+        </a>
+        {# Ici j'ai écrit le bouton de soumission à la main #}
+        <input type="submit" value="Supprimer" class="btn btn-danger" />
+        {# Ceci va générer le champ CSRF #}
+        {{ form_rest(form) }}
+    </form>
+
+{% endblock %}

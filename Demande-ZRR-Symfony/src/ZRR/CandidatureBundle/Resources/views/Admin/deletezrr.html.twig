@@ -1,0 +1,47 @@
+{% extends "ZRRCandidatureBundle::layoutAdmin.html.twig" %}
+
+
+{% block title %}
+
+    Supprimer une ZRR - {{ parent() }}
+
+{% endblock %}
+
+
+{% block zrr_admin_body %}
+
+
+    <h2>Supprimer une ZRR</h2>
+
+
+    <div class="alert alert-danger">
+
+        <strong>{{ 'zrr.delete.confirmation'|trans({'%code%': zrr.codeZrr}) }}</strong>
+
+    </div>
+
+
+    {# On met l'id de la zrr dans la route de l'action du formulaire #}
+
+    <form action="{{ path('zrr_zrr_delete', {'zrr_id': zrr.id}) }}" method="post">
+
+        <a href="{{ path('zrr_admin_home_page') }}" class="btn btn-default">
+
+            <i class="glyphicon glyphicon-chevron-left"></i>
+
+            Retour au menu
+
+        </a>
+
+        {# Ici j'ai écrit le bouton de soumission à la main #}
+
+        <input type="submit" value="Supprimer" class="btn btn-danger" />
+
+        {# Ceci va générer le champ CSRF #}
+
+        {{ form_rest(form) }}
+
+    </form>
+
+
+{% endblock %}

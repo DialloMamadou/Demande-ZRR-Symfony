@@ -1,0 +1,24 @@
+{% extends "ZRRCandidatureBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block zrr_candidature_body %}
+
+    <h2 align="CENTER">{{ 'activite.titre'|trans }}</h2>
+    <hr>
+
+    {{ activite.id }}
+
+    {{ candidat.id }}{{ candidat.nom }}{{ candidat.prenom }}
+
+    <a href="{{ path('zrr_activite_edit', {'act_id': activite.id}) }}" class="btn btn-default">Modifier</a>
+
+
+
+
+
+
+
+{% endblock %}

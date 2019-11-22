@@ -1,0 +1,107 @@
+{# app/Resources/views/layout.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        tr:nth-child(odd) {background: #CCC}
+        th{background: #FFF}
+
+        div#menu{padding-left: 0px;}
+        .collapsible {
+            background-color: #1dabff;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+
+            text-align: center;
+            outline: none;
+            font-size: 20px;
+        }
+
+        .active, .collapsible:hover {
+            background-color: #aacd4e;
+        }
+
+        .content {
+            border-radius: 5px;
+        padding: 10px;
+            width: 100%;
+            display: none;
+            overflow: hidden;
+            background-color: #dfdfdf;
+            font-size: 15px;
+            text-align: center;
+        }
+    </style>
+
+    <title>{% block title %}Adminstrateur{% endblock %}</title>
+
+    {% block stylesheets %}
+        {# On charge le CSS de bootstrap depuis le site directement #}
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    {% endblock %}
+</head>
+
+<body>
+
+<div class="container">
+    <div id="header" class="jumbotron" style="color: #5eb5e0">
+        <h1 align="CENTER">Demande d'accès ZRR</h1>
+    </div>
+
+    {# On affiche tous les messages flash dont le nom est « info » #}
+    {% for message in app.session.flashbag.get('notice') %}
+        <div class="alert alert-info">{{ message }}</div>
+    {% endfor %}
+
+
+    <div align="right">
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right navbar-items" style="font-size: 15px;color:black !important;">
+                <li><a href="{{  path('zrr_language', {'_locale':'fr'}) }} ">FR</a></li>
+                <li><a href= "{{ path('zrr_language', {'_locale':'en'})  }} ">EN</a></li>
+            </ul>
+        </div>
+
+        {% if is_granted("IS_AUTHENTICATED_FULLY") %}{#IS_AUTHENTICATED_REMEMBERED#}
+            Connecté en tant que <strong style="color: #44cddd;font-size: 25px">{{ app.user.username }}</strong>
+            -
+            <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+        {% else%}
+            <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+        {% endif %}
+    </div>
+
+
+
+                {# On n'affiche le lien « Ajouter une annonce » qu'aux auteurs
+  (et admins, qui héritent du rôle auteur) #}
+                {{  render(controller("ZRRCandidatureBundle:Administrateur:menu")) }}
+
+        <div id="content" class="col-md-9">
+            {% block body %}
+            {% endblock %}
+        </div>
+
+    <hr>
+
+
+</div>
+<footer>
+    <p>Projet ZRR {{ 'now'|date('Y') }}</p>
+</footer>
+
+{% block javascripts %}
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+{% endblock %}
+
+</body>
+</html>

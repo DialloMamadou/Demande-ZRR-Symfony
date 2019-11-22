@@ -1,0 +1,67 @@
+
+{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+<div class="well">
+    <h2 align="center"><strong style="color: #0088CC">Les informations du candidat</strong></h2>
+    {{ form_row(form.candidat.nom) }}
+    {{ form_row(form.candidat.prenom) }}
+    {{ form_row(form.candidat.nomMarital) }}
+    {{ form_row(form.candidat.sexe) }}
+    {{ form_row(form.candidat.typeId) }}
+    {{ form_row(form.candidat.numId) }}
+    {{ form_row(form.candidat.ddn) }}
+    {{ form_row(form.candidat.cpNais) }}
+    {{ form_row(form.candidat.villeNais) }}
+    {{ form_row(form.candidat.paysNais) }}
+    {{ form_row(form.candidat.nationalite) }}
+    {{ form_row(form.candidat.nationalite2) }}
+    {{ form_row(form.candidat.email.first) }}
+    {{ form_row(form.candidat.email.second) }}
+    {{ form_row(form.candidat.adresse) }}
+    {{ form_row(form.candidat.cp) }}
+    {{ form_row(form.candidat.ville) }}
+    {{ form_row(form.candidat.pays) }}
+    {{ form_row(form.candidat.situationPro) }}
+    {{ form_row(form.candidat.employeur) }}
+    {{ form_row(form.candidat.adresseEmployeur) }}
+    {{ form_row(form.candidat.cpEmployeur) }}
+    {{ form_row(form.candidat.villeEmployeur) }}
+    {{ form_row(form.candidat.paysEmployeur) }}
+
+    </div>
+
+    <hr>
+    <div class="well">
+
+    <h2 align="center"><strong style="color: #0088CC">Les informations complementaires du candidat</strong></h2>
+    {{ form_widget(form.candidat.infoCompl) }}
+
+    </div>
+
+    <hr>
+    <div class="well">
+        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    <h2 align="center"><strong style="color: #0088CC">Activité du candidat au sein de la ZRR</strong></h2>
+    {{ form_widget(form.activite) }}
+
+    </div>
+
+    <hr>
+    <div class="well">
+
+    <h2 align="center"><strong style="color: #0088CC">Les informations de la ZRR</strong></h2>
+    {{ form_widget(form.zrr) }}
+
+
+    {{ form_rest(form) }}
+
+    {{ form_widget(form.save,{'attr': {'class': 'btn btn-primary'}}) }}
+
+        <p>
+            <a href="{{ path('zrr_admin_home_page') }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+                Annuler
+            </a>
+        </p>
+    </div>
+    {{ form_end(form) }}
+

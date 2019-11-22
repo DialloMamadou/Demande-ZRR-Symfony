@@ -1,0 +1,49 @@
+{% extends "ZRRCandidatureBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block zrr_candidature_body %}
+
+    <h2 align="CENTER">{{ 'activite.titre'|trans }}</h2>
+    <hr>
+<table class="table" border="2">
+    <caption><h2><strong style="color: #dd8e11">Tableau des ZRR</strong></h2></caption>
+    <thead>
+    <tr>
+        <th>Code de la ZRR</th>
+        <th>Adresse de la ZRR</th>
+        <th>Ministere de ratachement</th>
+        <th colspan="2" >Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{ zrr.codeZrr }}</td>
+        <td>{{ zrr.adresseZrr }}</td>
+        <td>{{ zrr.ministere }}</td>
+        <td>
+            <a href="{{ path('zrr_zrr_edit', {'zrr_id': zrr.id}) }}" class="btn btn-info" >
+                <i class="glyphicon glyphicon-edit"></i>
+                Modifier
+            </a>
+
+        </td>
+        <td>
+            <a href="{{ path('zrr_zrr_delete', {'zrr_id': zrr.id}) }}" class="btn btn-danger">
+                <i class="glyphicon glyphicon-trash"></i>
+                Supprimer
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+
+{% endblock %}

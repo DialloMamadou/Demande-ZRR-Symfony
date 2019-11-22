@@ -1,0 +1,72 @@
+{# src/MCD/PlatformBundle/Resources/views/Advert/index.html.twig #}
+
+{% extends "ZRRCandidatureBundle::layoutSecr.html.twig" %}
+{% block title %}
+    Accueil - {{ parent() }}
+{% endblock %}
+
+
+{% block zrr_admin_body %}
+    <div class="row">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h3 align="CENTER" class="panel-title">
+                        La liste des dossiers en attente
+                    </h3>
+                    <span class="pull-right btn-click">
+                        <i class="fa fa-chevron-circle-up"></i>
+                    </span>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="panel-body">
+        <table class="table table-condensed">
+            <thead>
+            <tr>
+                <th>Numéro de dossier</th>
+                <th>Date de la demande</th>
+                <th>Etat du dossier</th>
+                <th rowspan="3">Actions</th>
+            </tr>
+            </thead><tbody>
+            {% for dossier in listDossier %}
+
+                <tr>
+                    <td>{{ dossier.numDossier }}</td>
+                    <td>{{ dossier.dateDemande|date('d/m/Y') }},</td>
+                    <td>{{ dossier.etatDossier }}</td>
+                    <td>
+                        <a href="{{ path('zrr_secr_dossier_view', {'dossier_id': dossier.id}) }}" class="btn btn-primary">
+                            <i class="glyphicon glyphicon-eye-open"></i>
+                            Afficher
+                        </a>
+                    </td>
+
+                    <td>
+                        <a href="{{ path('zrr_dossier_valider', {'dossier_id': dossier.id}) }}" class="btn btn-success">
+                            <i class="glyphicon glyphicon-ok"></i>
+                            Valider
+                        </a>
+                    </td>
+
+                    <td>
+                        <a href="{{ path('zrr_dossier_retourner', {'dossier_id': dossier.id}) }}" class="btn btn-warning">
+                            <i class="glyphicon glyphicon-share-alt"></i>
+                            Retourner
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <li>Pas (encore !) de dossiers</li>
+            {% endfor %}
+            </tbody>
+
+        </table>
+
+                </div>
+            </div>
+    </div>
+{% endblock %}

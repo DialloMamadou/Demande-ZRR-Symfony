@@ -1,0 +1,237 @@
+<div class="well">
+{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    {{ form_row(form.candidat.nom) }}
+    {{ form_row(form.candidat.prenom) }}
+    {{ form_row(form.candidat.nomMarital) }}
+    {{ form_row(form.candidat.sexe) }}
+    {{ form_row(form.candidat.typeId) }}
+    {{ form_row(form.candidat.numId) }}
+    {{ form_row(form.candidat.ddn) }}
+    {{ form_row(form.candidat.cpNais) }}
+    {{ form_row(form.candidat.villeNais) }}
+    {{ form_row(form.candidat.paysNais) }}
+    {{ form_row(form.candidat.nationalite) }}
+    {{ form_row(form.candidat.nationalite2) }}
+    {{ form_row(form.candidat.email.first) }}
+    {{ form_row(form.candidat.email.second) }}
+    {{ form_row(form.candidat.adresse) }}
+    {{ form_row(form.candidat.cp) }}
+    {{ form_row(form.candidat.ville) }}
+    {{ form_row(form.candidat.pays) }}
+    {{ form_row(form.candidat.situationPro) }}
+    {{ form_row(form.candidat.employeur) }}
+    {{ form_row(form.candidat.adresseEmployeur) }}
+    {{ form_row(form.candidat.cpEmployeur) }}
+    {{ form_row(form.candidat.villeEmployeur) }}
+    {{ form_row(form.candidat.paysEmployeur) }}
+    {{ form_row(form.documents) }}
+
+<a href="#" id="add_document" class="btn btn-default">Ajouter un document</a>
+</div>
+<hr/>
+<div class="well">
+    {{ form_row(form.candidat.infoCompl) }}
+
+    {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+</div>
+{# On charge la bibliothèque jQuery. Ici, je la prends depuis le CDN google
+
+   mais si vous l'avez en local, changez simplement l'adresse. #}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+{# Voici le script en question : #}
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
+
+        var $container = $('div#zrr_candidaturebundle_dossier_documents');
+
+
+        // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
+
+        var index = $container.find(':input').length;
+
+
+        // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
+
+        $('#add_document').click(function(e) {
+
+            addDocument($container);
+
+
+            e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+
+            return false;
+
+        });
+
+
+        // On ajoute un premier champ automatiquement s'il n'en existe pas déjà un (cas d'un nouveau candidat par exemple).
+
+        /*if (index == 0) {
+
+            addDocument($container);
+
+        } else {
+
+            // S'il existe déjà des documents, on ajoute un lien de suppression pour chacun d'entre eux
+
+            $container.children('div').each(function() {
+
+                addDeleteLink($(this));
+
+            });
+
+        }*/
+        addCV($container);
+        addID($container);
+
+        if (index != 0) {
+            // S'il existe déjà des documents, on ajoute un lien de suppression pour chacun d'entre eux
+
+            $container.children('div').each(function() {
+
+                addDeleteLink($(this));
+
+            });
+
+        }
+
+        //fonction qui ajoute le CV
+        function addCV($container) {
+
+            // Dans le contenu de l'attribut « data-prototype », on remplace :
+
+            // - le texte "__name__label__" qu'il contient par le label du champ
+
+            // - le texte "__name__" qu'il contient par le numéro du champ
+
+            var template = $container.attr('data-prototype')
+
+                .replace(/__name__label__/g, 'CV')
+
+                .replace(/__name__/g,        'cv')
+
+            ;
+
+
+            // On crée un objet jquery qui contient ce template
+
+            var $prototype = $(template);
+
+
+            // On ajoute le prototype modifié à la fin de la balise <div>
+
+            $container.append($prototype);
+
+        }
+
+        //fonction qui ajoute la piece d'identité
+        function addID($container) {
+
+            // Dans le contenu de l'attribut « data-prototype », on remplace :
+
+            // - le texte "__name__label__" qu'il contient par le label du champ
+
+            // - le texte "__name__" qu'il contient par le numéro du champ
+
+            var template = $container.attr('data-prototype')
+
+                .replace(/__name__label__/g, 'Pièce d\'identité')
+
+                .replace(/__name__/g,        'id')
+
+            ;
+
+
+            // On crée un objet jquery qui contient ce template
+
+            var $prototype = $(template);
+
+
+            // On ajoute le prototype modifié à la fin de la balise <div>
+
+            $container.append($prototype);
+
+        }
+        // La fonction qui ajoute un formulaire DocumentType
+
+        function addDocument($container) {
+
+            // Dans le contenu de l'attribut « data-prototype », on remplace :
+
+            // - le texte "__name__label__" qu'il contient par le label du champ
+
+            // - le texte "__name__" qu'il contient par le numéro du champ
+
+            var template = $container.attr('data-prototype')
+
+                .replace(/__name__label__/g, 'Document n°' + (index+1))
+
+                .replace(/__name__/g,        index)
+
+            ;
+
+
+            // On crée un objet jquery qui contient ce template
+
+            var $prototype = $(template);
+
+
+            // On ajoute au prototype un lien pour pouvoir supprimer le document
+
+            addDeleteLink($prototype);
+
+
+            // On ajoute le prototype modifié à la fin de la balise <div>
+
+            $container.append($prototype);
+
+
+            // Enfin, on incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
+
+            index++;
+
+        }
+
+
+        // La fonction qui ajoute un lien de suppression d'un document
+
+        function addDeleteLink($prototype) {
+
+            // Création du lien
+
+            var $deleteLink = $('<a href="#" class="btn btn-danger">Supprimer</a>');
+
+
+            // Ajout du lien
+
+            $prototype.append($deleteLink);
+
+
+            // Ajout du listener sur le clic du lien pour effectivement supprimer le document
+
+            $deleteLink.click(function(e) {
+
+                $prototype.remove();
+
+
+                e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+
+                return false;
+
+            });
+
+        }
+
+    });
+
+</script>
+

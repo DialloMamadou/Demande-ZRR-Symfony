@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Labo ZRR{% endblock %}</title>
+
+    {% block stylesheets %}
+        {# On charge le CSS de bootstrap depuis le site directement #}
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <!--<link rel="stylesheet" href="__DIR__../../../../bootstrap-3.3.7/bootstrap-3.3.7/dist/css/bootstrap.min.css">-->
+    {% endblock %}
+</head>
+
+<body>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right navbar-items" style="font-size: 15px;color:black !important;">
+        <li><a href="{{  path('zrr_language', {'_locale':'fr'}) }} ">FR</a></li>
+        <li><a href= "{{ path('zrr_language', {'_locale':'en'})  }} ">EN</a></li>
+        {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+
+            <li><a href="{{ path('fos_user_security_logout')}}">Logout</a></li>
+        {% endif %}
+    </ul>
+</div>
+<div class="container">
+    <div id="header" class="jumbotron">
+        <h1>Demande accès ZRR</h1>
+        <p>
+            Décret nº2011-1425 du 2 novembre 2011 portant l'applicatoion de l'article 413-7
+            du code pénal et relatif à la protection de potentiel scientifique et technique de la nation
+        </p>
+    </div>
+
+    <div id="content" class="col-md-9">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+            Connecté en tant que {{ app.user.username }}
+
+            -
+
+            <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+
+        {% else %}
+
+            <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+            <br/>
+            <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>
+
+        {% endif %}
+        {% block body %}
+        {% endblock %}
+    </div>
+</div>
+
+    <hr>
+
+    <footer>
+        <p>{{ 'now'|date('Y') }}</p>
+    </footer>
+
+
+{% block javascripts %}
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!--<script src="__DIR__../../../../bootstrap-3.3.7/bootstrap-3.3.7/dist/css/bootstrap.min.js"></script>-->
+{% endblock %}
+
+</body>
+</html>
